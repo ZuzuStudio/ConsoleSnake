@@ -15,7 +15,7 @@ void draw(char array[M][N]);
 void clear();
 void move(char array[M][N], Symbol *snake, short n);
 void snake_in(char array[M][N], Symbol *snake, short n);
-void item_in(char array[M][N], Symbol food);
+void item_in(char array[M][N]);
 int kbhit();
 int getch();
 

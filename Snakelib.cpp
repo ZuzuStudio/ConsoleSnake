@@ -53,8 +53,9 @@ void snake_in(char array[M][N], Symbol *snake, short n)
     }
 }
 
-void item_in(char array[M][N], Symbol food)
+void item_in(char array[M][N])
 {
+    Symbol food;
     do
     {
         food.x=rand()%(M-2)+1;
