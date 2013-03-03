@@ -1,5 +1,5 @@
 *.[oa]
-*.cbp
+*.cbp*
 *.depend
 *.layout*
 *~
