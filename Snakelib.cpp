@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void init (char array[M][N], int M, int N)
+void init (char **array, int M, int N)
 {
    for (short i = 0; i < M; ++i)
       for (short j = 0; j < N; ++j)
@@ -18,7 +18,7 @@ void init (char array[M][N], int M, int N)
             array[i][j] = cell;
 }
 
-void draw (char array[M][N], int M, int N)
+void draw (char **array, int M, int N)
 {
    for (short i = 0; i < M; ++i)
    {
@@ -34,7 +34,7 @@ void clear()
    system ("clear");
 }
 
-void move (char array[M][N], int M, int N, Symbol *snake, short n)
+void move (char **array, int M, int N, Symbol *snake, short n)
 {
    array[snake[0].x][snake[0].y] = cell;
 
@@ -45,7 +45,7 @@ void move (char array[M][N], int M, int N, Symbol *snake, short n)
    }
 }
 
-void snake_in (char array[M][N], int M, int N, Symbol *snake, short n)
+void snake_in (char **array, int M, int N, Symbol *snake, short n)
 {
    for (short i = 0; i < n; ++i)
    {
@@ -55,7 +55,7 @@ void snake_in (char array[M][N], int M, int N, Symbol *snake, short n)
    }
 }
 
-void item_in (char array[M][N], int M, int N, Symbol &food)
+void item_in (char **array, int M, int N, Symbol &food)
 {
    do
    {

@@ -10,12 +10,12 @@ struct Symbol
    short y;
 };
 
-void init (char array[M][N], int M, int N);
-void draw (char array[M][N], int M, int N);
+void init (char **array, int M, int N);
+void draw (char **array, int M, int N);
 void clear();
-void move (char array[M][N], int M, int N, Symbol *snake, short n);
-void snake_in (char array[M][N], int M, int N, Symbol *snake, short n);
-void item_in (char array[M][N], int M, int N, Symbol &food);
+void move (char **array, int M, int N, Symbol *snake, short n);
+void snake_in (char **array, int M, int N, Symbol *snake, short n);
+void item_in (char **array, int M, int N, Symbol &food);
 int kbhit();
 int getch();
 

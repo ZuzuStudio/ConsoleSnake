@@ -14,7 +14,13 @@ int main()
    Symbol food, *snake = NULL;
    snake = new Symbol[start_len];
    short len = 3;
-   char field[M][N];
+
+   char **field=NULL;
+   field=new char*[M];
+   for(int i=0;i<M;++i)
+      field[i]=NULL;
+   for(int i=0;i<M;++i)
+      field[i]=new char[N];
 
    init (field, M, N);
    snake_in (field, M, N, snake, len);
@@ -95,5 +101,8 @@ int main()
       }
    }
 
+   for(int i=0;i<M;++i)
+      delete [] field[i];
+   delete [] field;
    return 0;
 }
