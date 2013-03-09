@@ -8,19 +8,30 @@
 
 using namespace std;
 
-int main()
+int main (int argc, char **argv)
 {
    srand (time (NULL));
+   double quotient = 1.0;
+   int pause;
+
+   if (argc == 1)
+      pause = 100000;
+   else if (atoi (argv[1]))
+      pause = atoi (argv[1]);
+   else pause = 100000;
+
    Symbol food, *snake = NULL;
    snake = new Symbol[start_len];
    short len = 3;
 
-   char **field=NULL;
-   field=new char*[M];
-   for(int i=0;i<M;++i)
-      field[i]=NULL;
-   for(int i=0;i<M;++i)
-      field[i]=new char[N];
+   char **field = NULL;
+   field = new char*[M];
+
+   for (int i = 0; i < M; ++i)
+      field[i] = NULL;
+
+   for (int i = 0; i < M; ++i)
+      field[i] = new char[N];
 
    init (field, M, N);
    snake_in (field, M, N, snake, len);
@@ -33,6 +44,8 @@ int main()
 
    while (game)
    {
+      usleep (pause * quotient);
+
       if (kbhit())
          button = getch();
 
@@ -44,7 +57,7 @@ int main()
       switch (twin)
       {
          case 'w':
-            usleep (145000);
+            quotient = 1.45;
             snake[len-1].x--;
 
             if (snake[len-1].x < 1)
@@ -52,7 +65,7 @@ int main()
 
             break;
          case 's':
-            usleep (145000);
+            quotient = 1.45;
             snake[len-1].x++;
 
             if (snake[len-1].x > M - 2)
@@ -60,7 +73,7 @@ int main()
 
             break;
          case 'a':
-            usleep (100000);
+            quotient = 1.0;
             snake[len-1].y--;
 
             if (snake[len-1].y < 1)
@@ -68,7 +81,7 @@ int main()
 
             break;
          case 'd':
-            usleep (100000);
+            quotient = 1.0;
             snake[len-1].y++;
 
             if (snake[len-1].y > N - 2)
@@ -101,8 +114,9 @@ int main()
       }
    }
 
-   for(int i=0;i<M;++i)
+   for (int i = 0; i < M; ++i)
       delete [] field[i];
+
    delete [] field;
    return 0;
 }
