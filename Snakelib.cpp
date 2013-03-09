@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void input (char array[M][N], int M, int N)
+void init (char array[M][N], int M, int N)
 {
    for (short i = 0; i < M; ++i)
       for (short j = 0; j < N; ++j)
@@ -55,10 +55,8 @@ void snake_in (char array[M][N], int M, int N, Symbol *snake, short n)
    }
 }
 
-void item_in (char array[M][N], int M, int N)
+void item_in (char array[M][N], int M, int N, Symbol &food)
 {
-   Symbol food;
-
    do
    {
       food.x = rand() % (M - 2) + 1;

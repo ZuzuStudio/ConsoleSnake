@@ -15,20 +15,12 @@ int main()
    snake = new Symbol[start_len];
    short len = 3;
    char field[M][N];
-   input (field, M, N);
+
+   init (field, M, N);
    snake_in (field, M, N, snake, len);
-
-   //item_in(field, food);
-   do
-   {
-      food.x = rand() % (M - 2) + 1;
-      food.y = rand() % (N - 2) + 1;
-   }
-   while (field[food.x][food.y] == snake_icon);
-
-   field[food.x][food.y] = food_icon;
-
+   item_in (field, M, N, food);
    draw (field, M, N);
+
    char button = 'd', twin = button;
    bool game = true;
    short score = 0;
@@ -99,15 +91,7 @@ int main()
          snake[len-1].x = snake[len-2].x;
          snake[len-1].y = snake[len-2].y;
 
-         //item_in(field, food);
-         do
-         {
-            food.x = rand() % (M - 2) + 1;
-            food.y = rand() % (N - 2) + 1;
-         }
-         while (field[food.x][food.y] == snake_icon);
-
-         field[food.x][food.y] = food_icon;
+         item_in (field, M, N, food);
       }
    }
 
