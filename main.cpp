@@ -44,11 +44,12 @@ int main (int argc, char **argv)
 
    while (game)
    {
-      usleep (pause * quotient);
+
 
       if (kbhit())
          button = getch();
 
+      usleep (pause * quotient);
       move (field, M, N , snake, len);
 
       if ( (button == 's' && twin != 'w') || (button == 'w' && twin != 's') || (button == 'a' && twin != 'd') || (button == 'd' && twin != 'a'))
