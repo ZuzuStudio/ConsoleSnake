@@ -8,6 +8,7 @@
 
 using namespace std;
 
+
 void input(char array[M][N][K])
 {
     for (short i=0; i<M; ++i)
@@ -35,6 +36,7 @@ void clear()
     system ("clear");
 }
 
+
 void move(char array[M][N][K], Symbol *snake, short n)
 {
     for (short k=0; k<K; ++k)
@@ -45,6 +47,7 @@ void move(char array[M][N][K], Symbol *snake, short n)
         snake[i].y=snake[i+1].y;
     }
 }
+
 
 void snake_in(char array[M][N][K], Symbol *snake, short n)
 {

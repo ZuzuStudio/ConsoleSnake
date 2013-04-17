@@ -76,6 +76,7 @@ int main()
             sleep(1);
             continue;
         }
+
         for (short k=0; k<K; ++k)
         field[snake[len-1].x][snake[len-1].y][k]=snake_icon[k];
         clear();
@@ -86,6 +87,7 @@ int main()
             score++;
             snake[len-1].x=snake[len-2].x;
             snake[len-1].y=snake[len-2].y;
+
             do
             {
                 food.x=rand()%(M-2)+1;
