@@ -64,7 +64,8 @@ void item_in(char array[M][N][K], Symbol food)
         food.x=rand()%(M-2)+1;
         food.y=rand()%(N-2)+1;
     }
-    while (array[food.x][food.y][0]==snake_icon[0]);
+    while (array[food.x][food.y][0]==snake_icon[0]&&array[food.x][food.y][1]==snake_icon[1]
+                   &&array[food.x][food.y][2]==snake_icon[2]);
     for (short k=0; k<K; ++k)
     array[food.x][food.y][k]=food_icon[k];
 }

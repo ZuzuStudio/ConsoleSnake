@@ -22,7 +22,8 @@ int main()
         food.x=rand()%(M-2)+1;
         food.y=rand()%(N-2)+1;
     }
-    while (field[food.x][food.y][0]==snake_icon[0]);
+    while (field[food.x][food.y][0]==snake_icon[0]&&field[food.x][food.y][1]==snake_icon[1]
+                   &&field[food.x][food.y][2]==snake_icon[2]);
     for (short k=0; k<K; ++k)
     field[food.x][food.y][k]=food_icon[k];
 
@@ -35,7 +36,8 @@ int main()
         if(kbhit())
             button=getch();
         move(field, snake, len);
-        if ((button=='s'&&twin!='w')||(button=='w'&&twin!='s')||(button=='a'&&twin!='d')||(button=='d'&&twin!='a'))
+        if ((button=='s'&&twin!='w')||(button=='w'&&twin!='s')
+            ||(button=='a'&&twin!='d')||(button=='d'&&twin!='a'))
             twin=button;
         switch (twin)
         {
@@ -64,7 +66,9 @@ int main()
                 snake[len-1].y=1;
             break;
         }
-        if (field[snake[len-1].x][snake[len-1].y]==snake_icon)
+        if (field[snake[len-1].x][snake[len-1].y][0]==snake_icon[0]
+            &&field[snake[len-1].x][snake[len-1].y][1]==snake_icon[1]
+            &&field[snake[len-1].x][snake[len-1].y][2]==snake_icon[2])
         {
             game=false;
             cout<<endl<<"Счёт: "<<score<<endl;
@@ -87,7 +91,8 @@ int main()
                 food.x=rand()%(M-2)+1;
                 food.y=rand()%(N-2)+1;
             }
-            while (field[food.x][food.y][0]==snake_icon[0]);
+            while (field[food.x][food.y][0]==snake_icon[0]&&field[food.x][food.y][1]==snake_icon[1]
+                   &&field[food.x][food.y][2]==snake_icon[2]);
             for (short k=0; k<K; ++k)
             field[food.x][food.y][k]=food_icon[k];
         }
