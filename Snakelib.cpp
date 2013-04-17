@@ -8,22 +8,25 @@
 
 using namespace std;
 
-void input(char array[M][N])
+
+void input(char array[M][N][K])
 {
     for (short i=0; i<M; ++i)
         for (short j=0; j<N; ++j)
+            for (short k=0; k<K; ++k)
             if (i==0||i==M-1||j==0||j==N-1)
-                array[i][j]=border_icon;
+                array[i][j][k]=border_icon[k];
             else
-                array[i][j]=cell;
+                array[i][j][k]=cell[k];
 }
 
-void draw(char array[M][N])
+void draw(char array[M][N][K])
 {
     for (short i=0; i<M; ++i)
     {
         for (short j=0; j<N; ++j)
-            cout<<array[i][j];
+            for (short k=0; k<K; ++k)
+            cout<<array[i][j][k];
         cout<<endl;
     }
 }
@@ -33,9 +36,11 @@ void clear()
     system ("clear");
 }
 
-void move(char array[M][N], Symbol *snake, short n)
+
+void move(char array[M][N][K], Symbol *snake, short n)
 {
-    array[snake[0].x][snake[0].y]=cell;
+    for (short k=0; k<K; ++k)
+    array[snake[0].x][snake[0].y][k]=cell[k];
     for (short i=0; i<n-1; ++i)
     {
         snake[i].x=snake[i+1].x;
@@ -43,26 +48,28 @@ void move(char array[M][N], Symbol *snake, short n)
     }
 }
 
-void snake_in(char array[M][N], Symbol *snake, short n)
+
+void snake_in(char array[M][N][K], Symbol *snake, short n)
 {
     for (short i=0; i<n; ++i)
     {
         snake[i].x=1;
         snake[i].y=i+1;
-        array[snake[i].x][snake[i].y]=snake_icon;
+        for (short k=0; k<K; ++k)
+        array[snake[i].x][snake[i].y][k]=snake_icon[k];
     }
 }
 
-void item_in(char array[M][N])
+void item_in(char array[M][N][K], Symbol food)
 {
-    Symbol food;
     do
     {
         food.x=rand()%(M-2)+1;
         food.y=rand()%(N-2)+1;
     }
-    while (array[food.x][food.y]==snake_icon);
-    array[food.x][food.y]=food_icon;
+    while (array[food.x][food.y][0]==snake_icon[0]);
+    for (short k=0; k<K; ++k)
+    array[food.x][food.y][k]=food_icon[k];
 }
 
 int kbhit()

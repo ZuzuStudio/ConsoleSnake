@@ -14,17 +14,17 @@ int main()
     Symbol food, *snake=NULL;
     snake=new Symbol[start_len];
     short len=3;
-    char field[M][N];
+    char field[M][N][K];
     input(field);
     snake_in(field, snake, len);
-    //item_in(field, food);
     do
     {
         food.x=rand()%(M-2)+1;
         food.y=rand()%(N-2)+1;
     }
-    while (field[food.x][food.y]==snake_icon);
-    field[food.x][food.y]=food_icon;
+    while (field[food.x][food.y][0]==snake_icon[0]);
+    for (short k=0; k<K; ++k)
+    field[food.x][food.y][k]=food_icon[k];
 
     draw(field);
     char button='d', twin=button;
@@ -40,13 +40,13 @@ int main()
         switch (twin)
         {
         case 'w':
-            usleep(145000);
+            usleep(125000);
             snake[len-1].x--;
             if (snake[len-1].x<1)
                 snake[len-1].x=M-2;
             break;
         case 's':
-            usleep(145000);
+            usleep(125000);
             snake[len-1].x++;
             if (snake[len-1].x>M-2)
                 snake[len-1].x=1;
@@ -72,7 +72,9 @@ int main()
             sleep(1);
             continue;
         }
-        field[snake[len-1].x][snake[len-1].y]=snake_icon;
+
+        for (short k=0; k<K; ++k)
+        field[snake[len-1].x][snake[len-1].y][k]=snake_icon[k];
         clear();
         draw(field);
         if (field[snake[len-1].x][snake[len-1].y]==field[food.x][food.y])
@@ -81,14 +83,15 @@ int main()
             score++;
             snake[len-1].x=snake[len-2].x;
             snake[len-1].y=snake[len-2].y;
-            //item_in(field, food);
+
             do
             {
                 food.x=rand()%(M-2)+1;
                 food.y=rand()%(N-2)+1;
             }
-            while (field[food.x][food.y]==snake_icon);
-            field[food.x][food.y]=food_icon;
+            while (field[food.x][food.y][0]==snake_icon[0]);
+            for (short k=0; k<K; ++k)
+            field[food.x][food.y][k]=food_icon[k];
         }
     }
     return 0;
